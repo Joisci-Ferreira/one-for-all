@@ -5,13 +5,13 @@ CREATE DATABASE SpotifyClone;
 CREATE TABLE SpotifyClone.artists(
     artist_id INT AUTO_INCREMENT PRIMARY KEY,
     artist_name VARCHAR(150) NOT NULL
-) engine = InnoDB;
+);
 
 CREATE TABLE SpotifyClone.plans(
     plan_id INT AUTO_INCREMENT PRIMARY KEY,
     plan_name VARCHAR(150) NOT NULL,
     plan_value DECIMAL(5,2) NOT NULL
-) engine = InnoDB;
+);
 
 CREATE TABLE SpotifyClone.users(
     user_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -20,7 +20,7 @@ CREATE TABLE SpotifyClone.users(
     plan_id INT NOT NULL,
     signature_date DATE NOT NULL,
     FOREIGN KEY (plan_id) REFERENCES plans(plan_id)  
-) engine = InnoDB;
+);
 
 CREATE TABLE SpotifyClone.albums(
     album_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -28,7 +28,7 @@ CREATE TABLE SpotifyClone.albums(
     artist_id INT NOT NULL,
     release_year YEAR,
     FOREIGN KEY (artist_id) REFERENCES artists(artist_id) 
-) engine = InnoDB;
+);
 
 CREATE TABLE SpotifyClone.songs(
     song_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -36,15 +36,15 @@ CREATE TABLE SpotifyClone.songs(
     album_id INT NOT NULL,
     seconds_duration INT NOT NULL,
     FOREIGN KEY (album_id) REFERENCES albums(album_id)
-) engine = InnoDB;
+);
 
 CREATE TABLE SpotifyClone.followArtists(
     user_id INT NOT NULL,
     artist_id INT NOT NULL,
     CONSTRAINT PRIMARY KEY(user_id, artist_id),
-    FOREIGN KEY (user_id) REFERENCES users(user_id) 
+    FOREIGN KEY (user_id) REFERENCES users(user_id), 
     FOREIGN KEY (artist_id) REFERENCES artists(artist_id) 
-) engine = InnoDB;
+);
 
 CREATE TABLE SpotifyClone.historys(
     user_id INT NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE SpotifyClone.historys(
     CONSTRAINT PRIMARY KEY(user_id, song_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id), 
     FOREIGN KEY (song_id) REFERENCES songs(song_id) 
-) engine = InnoDB;
+);
 
 INSERT INTO SpotifyClone.artists (artist_name)
 VALUES
@@ -90,7 +90,7 @@ VALUES
   ('Exuberant', 1, 1993),
   ('Hallowed Steam', 2, 1995),
   ('Incandescent', 3, 1998),
-  ('Temporary Culture', 4, 2011),
+  ('Temporary Culture', 4, 2001),
   ('Library of liberty', 4, 2003),
   ('Chained Down', 5, 2007),
   ('Cabinet of fools', 5, 2012),
@@ -102,7 +102,7 @@ VALUES
   ("Soul For Us", 1, 200),
   ("Reflections Of Magic", 1, 163),
   ("Dance With Her Own", 1, 116),
-  ("Troublesn Of My Inner Fire", 2, 203),
+  ("Troubles Of My Inner Fire", 2, 203),
   ("Time Fireworks", 2, 152),
   ("Magic Circus", 3, 105),
   ("Honey, So Do I", 3, 207),
@@ -126,7 +126,7 @@ VALUES
   ("Walking And Man", 7, 229),
   ("Hard And Time", 7, 135),
   ("Honey, I\'m A Lone Wolf", 7, 150),
-  ("She Things I Won\'t Tonight", 8, 166),
+  ("She Thinks I Won\'t Stay Tonight", 8, 166),
   ("He Heard You\'re Bad For Me", 8, 154),
   ("He Hopes We Can\'t Stay", 8, 210),
   ("I Know I Know", 8, 117),
@@ -136,7 +136,7 @@ VALUES
   ("I Ride Alone", 9, 151),
   ("Honey", 10, 79),
   ("You Cheated On Me", 10, 95),
-  ("Wouldn\'n It Be Nice", 10, 213),
+  ("Wouldn\'t It Be Nice", 10, 213),
   ("Baby", 10, 136),
   ("You Make Me Feel So..", 10, 83);  
 
@@ -205,4 +205,3 @@ VALUES
   (10, 21, '2017-12-04 05:33:43'),
   (10, 12, '2017-07-27 05:24:49'),
   (10, 13, '2017-12-25 01:03:57');
-    

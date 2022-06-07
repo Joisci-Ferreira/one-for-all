@@ -4,7 +4,7 @@ SELECT
   ROUND(AVG(P.plan_value), 2) AS 'faturamento_medio',
   SUM(P.plan_value) AS 'faturamento_total'
 FROM
-  SpotifyClone.plans AS P
-INNER JOIN  
   SpotifyClone.users AS U 
-WHERE P.plan_id = U.plan_id;    
+INNER JOIN  
+  SpotifyClone.plans AS P
+ON U.plan_id = P.plan_id;    

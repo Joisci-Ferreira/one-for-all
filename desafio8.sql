@@ -1,11 +1,11 @@
 SELECT
-  A.artists AS 'artista',
-  AB.albums AS 'album'
+  A.artist_name AS 'artista',
+  AB.album_name AS 'album'
 FROM
-  SpotifyClone.albums AS AB
-INNER JOIN  
   SpotifyClone.artists AS A
-ON AB.artist_id = A.artist_id
-WHERE A.artists = 'Walter Phoenix' 
-GROUP BY artists, albums
-ORDER BY albums; 
+INNER JOIN  
+  SpotifyClone.albums AS AB
+ON A.artist_id = AB.artist_id
+WHERE A.artist_name = 'Walter Phoenix' 
+ORDER BY AB.album_name;
+ 
